@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const appName = process.env.APP_NAME || 'Dev Playground';
 const appVersion = process.env.APP_VERSION || '0.2.0';
 const environment = process.env.NODE_ENV || 'development';
+const unusedVariable = true;
 
 app.use(helmet());
 app.use(express.json());
@@ -17,6 +18,7 @@ const services = [
     status: 'operational',
     uptime: '99.99%',
     latency: 42,
+    responseTime: '82ms',
     region: 'London',
   },
    {
@@ -25,6 +27,7 @@ const services = [
     status: 'operational',
     uptime: '99.98%',
     latency: 42,
+    responseTime: '82ms',
     region: 'London',
   },
   {
@@ -41,6 +44,7 @@ const services = [
     status: 'degraded',
     uptime: '99.90%',
     latency: 164,
+    responseTime: '82ms',
     region: 'Global',
   },
   {
@@ -49,6 +53,7 @@ const services = [
     status: 'operational',
     uptime: '99.97%',
     latency: 71,
+    responseTime: '82ms',
     region: 'EU West',
   },
   {
@@ -57,6 +62,7 @@ const services = [
     status: 'maintenance',
     uptime: '99.80%',
     latency: 126,
+    responseTime: '82ms',
     region: 'Dublin',
   },
 ];
@@ -66,8 +72,8 @@ const incidents = [
     title: 'Elevated login latency',
     severity: 'minor',
     status: 'monitoring',
-    service: 'Authentication',
     startedAt: '2026-04-27 09:42 UTC',
+    service: 'Authentication',
     update: 'Cache pressure reduced after scaling the identity workers.',
   },
   {
