@@ -1,0 +1,25 @@
+{
+  "name": "dev-playground",
+  "version": "0.2.0",
+  "private": true,
+  "description": "A hands-on service status dashboard for learning Git, GitHub Actions, Docker and deployment workflows.",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test tests/*.test.js",
+    "lint": "eslint .",
+    "check": "npm run lint && npm test"
+  },
+  "dependencies": {
+    "express": "latest",
+    "helmet": "latest"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "globals": "latest"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

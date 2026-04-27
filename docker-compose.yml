@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    image: cicd-playground:local
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      APP_NAME: CI/CD Playground
+      APP_VERSION: local
