@@ -6,7 +6,6 @@ const port = process.env.PORT || 3000;
 const appName = process.env.APP_NAME || 'Dev Playground';
 const appVersion = process.env.APP_VERSION || '0.2.0';
 const environment = process.env.NODE_ENV || 'development';
-const unusedVariable = true;
 
 app.use(helmet());
 app.use(express.json());
