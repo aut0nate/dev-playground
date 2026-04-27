@@ -19,6 +19,14 @@ const services = [
     latency: 42,
     region: 'London',
   },
+   {
+    name: 'Self Service Portal',
+    owner: 'Frontend Platform',
+    status: 'operational',
+    uptime: '99.98%',
+    latency: 42,
+    region: 'London',
+  },
   {
     name: 'Public API',
     owner: 'Backend Services',
