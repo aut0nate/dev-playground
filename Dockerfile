@@ -6,6 +6,8 @@ RUN npm ci
 FROM node:22-alpine AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
+ARG GIT_SHA=local
+ENV GIT_SHA=$GIT_SHA
 RUN addgroup -S nodeapp && adduser -S nodeapp -G nodeapp
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY package*.json ./

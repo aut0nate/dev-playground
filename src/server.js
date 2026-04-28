@@ -6,6 +6,8 @@ const port = process.env.PORT || 3000;
 const appName = process.env.APP_NAME || 'Dev Playground';
 const appVersion = process.env.APP_VERSION || '0.2.0';
 const environment = process.env.NODE_ENV || 'development';
+const gitSha = process.env.GIT_SHA || 'local';
+const shortGitSha = gitSha === 'local' ? 'local' : gitSha.slice(0, 7);
 
 app.use(helmet());
 app.use(express.json());
@@ -111,10 +113,23 @@ function statusSummary() {
 
 app.get('/api/health', (_req, res) => {
   res.status(200).json({
+    service: appName,
     status: 'ok',
+    environment,
+    version: appVersion,
+    gitSha,
+    shortGitSha,
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.get('/api/version', (_req, res) => {
+  res.status(200).json({
     service: appName,
     version: appVersion,
     environment,
+    gitSha,
+    shortGitSha,
     timestamp: new Date().toISOString(),
   });
 });
@@ -124,6 +139,8 @@ app.get('/api/status', (_req, res) => {
     service: appName,
     environment,
     version: appVersion,
+    gitSha,
+    shortGitSha,
     summary: statusSummary(),
     services,
     incidents,
@@ -176,12 +193,12 @@ app.get('/', (_req, res) => {
     <div class="shell">
       <section class="hero">
         <div class="topbar">
-          <span class="badge">${environment} · v${appVersion}</span>
+          <span class="badge">${environment} · v${appVersion} · ${shortGitSha}</span>
           <span class="state">${overallState}</span>
         </div>
         <h1>Service status dashboard.</h1>
         <p>A lightweight DevOps playground for CI/CD practice. You can evolve this through branches and pull requests by adding services, changing mock incidents, improving tests, publishing containers and practising rollbacks.</p>
-        <p>Health endpoint: <code>/api/health</code> · Status API: <code>/api/status</code></p>
+        <p>Health endpoint: <code>/api/health</code> · Status API: <code>/api/status</code> · Version API: <code>/api/version</code></p>
 
         <section class="metrics" aria-label="Status summary">
           <article class="metric"><span>Operational</span><strong>${summary.operational}</strong></article>
