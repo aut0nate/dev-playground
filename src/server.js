@@ -193,8 +193,8 @@ app.get('/', (_req, res) => {
     <div class="shell">
       <section class="hero">
         <div class="topbar">
-          <span class="badge">${environment} · v${appVersion} · ${shortGitSha}</span>
-          <span class="state">${overallState}</span>
+        <span class="badge">${environment} · v${appVersion} · commit ${shortGitSha}</span>
+        <span class="state">${overallState}</span>
         </div>
         <h1>Service status dashboard.</h1>
         <p>A lightweight DevOps playground for CI/CD practice. You can evolve this through branches and pull requests by adding services, changing mock incidents, improving tests, publishing containers and practising rollbacks.</p>
