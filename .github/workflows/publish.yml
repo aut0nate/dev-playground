@@ -55,7 +55,7 @@ jobs:
           "${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}" << 'EOF'
           set -e
 
-          cd /opt/dev-playground
+          cd /opt/stacks/dev-playground
 
           echo "IMAGE_TAG=${{ github.sha }}" > .env
 
